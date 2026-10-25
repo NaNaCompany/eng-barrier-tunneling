@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>사각 장벽 터널링 확률 계산기 · 단위 변환과 공식 | NaNa Lab</title><meta name="description" content="유한 폭 사각 장벽의 투과확률을 장벽 아래·경계·위 에너지에서 계산한다. · 입력 단위 변환과 적용 조건을 확인하고 장벽 투과확률 T 한 값을 계산합니다.">
+<link rel="canonical" href="https://nanalab.kr/eng-barrier-tunneling/"><meta name="robots" content="index,follow"><meta property="og:type" content="website"><meta property="og:locale" content="ko_KR"><meta property="og:title" content="사각 장벽 터널링 확률 계산기"><meta property="og:description" content="유한 폭 사각 장벽의 투과확률을 장벽 아래·경계·위 에너지에서 계산한다."><meta property="og:url" content="https://nanalab.kr/eng-barrier-tunneling/"><meta property="og:image" content="https://nanalab.kr/eng-barrier-tunneling/og.png"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="icon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "사각 장벽 터널링 확률 계산기", "url": "https://nanalab.kr/eng-barrier-tunneling/", "description": "유한 폭 사각 장벽의 투과확률을 장벽 아래·경계·위 에너지에서 계산한다.", "applicationCategory": "EducationalApplication", "operatingSystem": "Any", "inLanguage": "ko", "isAccessibleForFree": true, "author": {"@type": "Organization", "name": "NaNa Lab", "url": "https://nanalab.kr/"}}</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9767176956440077"
+        crossorigin="anonymous"></script>
+<script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })
+            (window, document, 'script', 'dataLayer', 'GTM-NV2WWQXB');
+    </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2ZYSF0173P"></script>
+<script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-2ZYSF0173P');
+    </script>
+</head><body><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NV2WWQXB" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+<a class="skip" href="#calculator">계산 입력으로 이동</a>
+<header><a class="brand" href="https://nanalab.kr/">NaNa Lab <span aria-hidden="true">/</span> Engineering</a><span class="edition">E112 · 양자</span></header>
+<main><p class="eyebrow">ONE FORMULA, ONE ANSWER</p><h1>사각 장벽 터널링 확률 계산기</h1><p class="intro">유한 폭 사각 장벽의 투과확률을 장벽 아래·경계·위 에너지에서 계산한다.. 입력 단위를 선택하고 조건에 맞는 한 값을 구하세요.</p>
+<div class="workspace"><section class="panel"><h2>계산할 값</h2><form id="calculator" novalidate><div class="row"><label for="field-mass">입자 질량 m</label><div class="input-pair"><input id="field-mass" name="mass" type="text" inputmode="decimal" value="0.00054857990904271002" required autocomplete="off" spellcheck="false" aria-describedby="note-mass"><select id="unit-mass" name="unit-mass" aria-label="입자 질량 m 단위"><option value="kg">kg</option><option value="g">g</option><option value="u" selected>u</option></select></div><p class="field-note" id="note-mass">SI 변환 후 0보다 큰 값</p></div><div class="row"><label for="field-energy">입사 운동에너지 E</label><div class="input-pair"><input id="field-energy" name="energy" type="text" inputmode="decimal" value="3.2043532679999998e-19" required autocomplete="off" spellcheck="false" aria-describedby="note-energy"><select id="unit-energy" name="unit-energy" aria-label="입사 운동에너지 E 단위"><option value="J" selected>J</option><option value="kJ">kJ</option><option value="eV">eV</option><option value="MeV">MeV</option></select></div><p class="field-note" id="note-energy">SI 변환 후 0보다 큰 값</p></div><div class="row"><label for="field-barrier">장벽 높이 U</label><div class="input-pair"><input id="field-barrier" name="barrier" type="text" inputmode="decimal" value="6.4087065359999996e-19" required autocomplete="off" spellcheck="false" aria-describedby="note-barrier"><select id="unit-barrier" name="unit-barrier" aria-label="장벽 높이 U 단위"><option value="J" selected>J</option><option value="kJ">kJ</option><option value="eV">eV</option><option value="MeV">MeV</option></select></div><p class="field-note" id="note-barrier">0 이상</p></div><div class="row"><label for="field-width">장벽 폭 a</label><div class="input-pair"><input id="field-width" name="width" type="text" inputmode="decimal" value="0.19999999999999998" required autocomplete="off" spellcheck="false" aria-describedby="note-width"><select id="unit-width" name="unit-width" aria-label="장벽 폭 a 단위"><option value="m">m</option><option value="km">km</option><option value="cm">cm</option><option value="mm">mm</option><option value="um">μm</option><option value="nm" selected>nm</option><option value="pm">pm</option><option value="AU">AU</option><option value="pc">pc</option></select></div><p class="field-note" id="note-width">0 이상</p></div><div class="actions"><button class="primary" type="submit">계산하기</button><button type="button" id="example">예제 넣기</button><button type="button" id="reset">비우기</button></div></form><p class="local-note">계산은 이 브라우저에서 처리합니다. 지수 표기(예: 1.2e-3)를 사용할 수 있습니다.</p><noscript>계산에는 JavaScript가 필요합니다. 아래 공식과 적용 조건은 그대로 읽을 수 있습니다.</noscript></section>
+<section id="result" class="panel output-panel" aria-labelledby="result-heading"><h2 id="result-heading">계산 결과</h2><p class="result-caption">장벽 투과확률 T</p><output id="result-value" class="number" form="calculator" aria-live="polite">—</output><span id="output-unit-label" class="result-unit"></span><div id="output-control"><label for="output-unit">결과 표시 단위</label><select id="output-unit"><option value="1">비율</option><option value="percent" selected>%</option></select></div><p id="status" class="status" role="status">입력 후 계산하기를 누르세요.</p><button type="button" id="copy-result" class="copy">결과 복사</button><div class="formula"><span>FORMULA</span><p>E&lt;U: T=[1+U²sinh²(κa)/(4E(U−E))]⁻¹; E=U: T=[1+mUa²/(2ℏ²)]⁻¹; E&gt;U: T=[1+U²sin²(qa)/(4E(E−U))]⁻¹</p></div></section></div>
+<section class="reference"><h2>적용 조건</h2><p>m,E&gt;0이며 U,a≥0이다. 장벽 양쪽의 위치에너지는 0이고 질량은 모든 영역에서 같다. 1차원 정상 산란과 비상대론적 입자를 가정한다. max(E,U)/(mc²)≤0.01로 제한한다. κ=√(2m(U−E))/ℏ, q=√(2m(E−U))/ℏ이다. E=U의 극한과 큰 sinh를 안정적으로 처리하며, 위상 qa&gt;10¹²인 장벽 위 입력은 수치 정확도 때문에 거부한다. 표현 범위보다 작은 양의 확률을 0으로 바꾸지 않는다. 장벽 위 공진 근처에서 위상 반올림 오차에 민감한 입력도 정밀도 오류로 거부한다.</p><p class="small">표시값은 부동소수점 근삿값입니다. 설계 안전계수와 입력하지 않은 오차 요인은 계산하지 않습니다.</p><details><summary>공식 근거와 제작 정보</summary><ul><li><a href="https://openstax.org/books/university-physics-volume-3/pages/7-6-the-quantum-tunneling-of-particles-through-potential-barriers" target="_blank" rel="noopener noreferrer">OpenStax · Quantum tunneling through potential barriers</a></li></ul><p class="small">코드·설명·아이콘·대표 이미지는 NaNa Lab에서 직접 작성했습니다. 연결된 자료의 본문·도판·코드를 복제하지 않았습니다.</p><p class="small">상수 기준: <a href="https://physics.nist.gov/cuu/Constants/">NIST / CODATA 2022</a>. μ₀·ε₀는 측정 기반 권고값이며 정의상수가 아닙니다. 사용 값과 정확성 구분은 <a href="SOURCES.md">출처 기록</a>에 있습니다.</p><p class="small">이 사이트에는 Google 광고·분석 및 Cloudflare 분석 코드가 포함됩니다.</p></details></section></main>
+<footer>© 2026 NaNa Lab · 직접 작성한 단일 수치 공학 도구 · <a href="https://github.com/NaNaCompany/eng-barrier-tunneling">소스 코드</a></footer><a class="more-apps" href="https://nanalab.kr/apps/">More Apps</a>
+<script type="module" src="app.js"></script>
+<script>
+(function () {
+  function ensureBeacon() {
+    // Cloudflare may inject its beacon at the edge. Reuse that script when present.
+    if (document.querySelector('script[src*="static.cloudflareinsights.com/beacon.min.js"]')) return;
+    var beacon = document.createElement('script');
+    beacon.defer = true;
+    beacon.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+    beacon.setAttribute('data-cf-beacon', JSON.stringify({token: '9f3423bb0d034d91bbe1a12afeff2429'}));
+    document.head.appendChild(beacon);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', ensureBeacon, {once: true});
+  else ensureBeacon();
+})();
+</script>
+</body></html>

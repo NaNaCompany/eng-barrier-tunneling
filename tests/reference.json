@@ -1,0 +1,99 @@
+{
+  "id": "E112",
+  "value": 0.1980708520340413,
+  "value_70_digits": "0.1980708520340412809044652651849002045631081401593116147757082071469775",
+  "method": "Independent Python Decimal (90 working digits, 70-digit report); direct analytical formulas, Decimal square roots/exponentials and argument-reduced Taylor sine. SI decimal spellings are used except explicitly marked exact-binary64 regression fixtures. No JavaScript imports.",
+  "cases": [
+    {
+      "name": "No barrier gives unit transmission",
+      "values": {
+        "barrier": 0
+      },
+      "expected": 1.0,
+      "expected_70_digits": "1"
+    },
+    {
+      "name": "Zero barrier width gives unit transmission",
+      "values": {
+        "width": 0
+      },
+      "expected": 1.0,
+      "expected_70_digits": "1"
+    },
+    {
+      "name": "At the top of the barrier use the finite threshold limit",
+      "values": {
+        "barrier": 3.204353268e-19
+      },
+      "expected": 0.6557648609237147,
+      "expected_70_digits": "0.6557648609237147126794841310239605546143876301104383016414562948761358"
+    },
+    {
+      "name": "Above-barrier scattering retains quantum reflection",
+      "values": {
+        "energy": 9.613059804e-19
+      },
+      "expected": 0.7527756638901215,
+      "expected_70_digits": "0.7527756638901215124582140414185320998677589973876026986170265383892335"
+    },
+    {
+      "name": "Near the barrier top is continuous",
+      "values": {
+        "energy": 6.40870653664087e-19
+      },
+      "expected": 0.48783493448544696,
+      "expected_70_digits": "0.4878349344854469772855998981609546647031022218447327743851108290957360"
+    },
+    {
+      "name": "Extremely opaque barrier reports positive underflow",
+      "values": {
+        "width": 1e-06
+      },
+      "throws": true
+    },
+    {
+      "name": "Relativistic incident energy is rejected",
+      "values": {
+        "energy": 1e-12
+      },
+      "throws": true
+    },
+    {
+      "name": "Ill-conditioned large above-barrier resonance is explicitly rejected",
+      "values": {
+        "mass": 1,
+        "energy": 1.0000000000009095,
+        "barrier": 1,
+        "width": 2.456467084768845e-19
+      },
+      "throws": true,
+      "physical_expected": 0.9762199861809007,
+      "method": "Independent cross-review: 90-digit Decimal, exact binary64 SI inputs and supplied binary64 hbar. Precision rejection is required because phase uncertainty changes transmission materially.",
+      "physical_expected_70_digits": "0.9762199861809006392614428270102746472493809868199648438370354668388039"
+    },
+    {
+      "name": "Binary-scaled phase retains a nonzero subnormal radicand",
+      "values": {
+        "mass": 1e-160,
+        "energy": 4e-164,
+        "barrier": 1e-164,
+        "width": 1e+128
+      },
+      "method": "90-digit Decimal, exact binary64 SI inputs and supplied binary64 hbar. Regression for an inaccurately rounded subnormal 2*m*delta radicand.",
+      "expected": 0.9890089052251636,
+      "expected_70_digits": "0.9890089052251635756432977486014762616674132205559004771750379936430656"
+    },
+    {
+      "name": "Binary-scaled below-barrier phase retains a subnormal radicand",
+      "values": {
+        "mass": 1e-160,
+        "energy": 1e-164,
+        "barrier": 4e-164,
+        "width": 1e+128
+      },
+      "method": "90-digit Decimal, exact binary64 SI inputs and supplied binary64 hbar. The below-barrier branch shares the same safely scaled radicand.",
+      "expected": 0.028538359581523023,
+      "expected_70_digits": "0.02853835958152302373028426629200716967137992913781317038329024943343009"
+    }
+  ]
+}
